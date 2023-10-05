@@ -28,6 +28,8 @@ def bootstrap_ci(y_true: List[int],
     assert method in bootstrap_methods, f'Bootstrap ci method {method} not in {bootstrap_methods}'
 
     indices = (np.arange(len(y_true)), )
+
+    print(indices)
     bootstrap_res = bootstrap(indices,
                               statistic=statistic,
                               n_resamples=n_resamples,
