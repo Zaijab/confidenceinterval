@@ -43,7 +43,7 @@ def bootstrap_ci(y_true: List[int],
     
     bootstrap_res = bootstrap(indices,
                               statistic=statistic,
-                              n_resamples=n_resamples,
+                              n_resamples=n_resamples if strata is None else 0,
                               confidence_level=confidence_level,
                               method=method.split('bootstrap_')[1],
                               bootstrap_result=bootstrap_res,
