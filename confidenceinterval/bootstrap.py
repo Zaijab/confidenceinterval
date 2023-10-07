@@ -30,7 +30,10 @@ def bootstrap_ci(y_true: List[int],
 
     def statistic(*indices):
         indices = np.array(indices)[0, :]
-        return metric(np.array(y_true)[indices], np.array(y_pred)[indices])
+        try:
+            return metric(np.array(y_true)[indices], np.array(y_pred)[indices])
+        except:
+            pass
 
     assert method in bootstrap_methods, f'Bootstrap ci method {method} not in {bootstrap_methods}'
 
