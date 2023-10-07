@@ -15,7 +15,8 @@ def roc_auc_score_bootstrap(y_true: List,
                             random_state: Callable = None,
                             average: str = 'macro',
                             multi_class: str = 'raise',
-                            labels: Optional[List] = None) -> Tuple[float, float]:
+                            labels: Optional[List] = None,
+                           strata = None) -> Tuple[float, float]:
     return bootstrap_ci(y_true=y_true,
                         y_pred=y_pred,
                         metric=lambda y1, y2: sklearn.metrics.roc_auc_score(y1, y2, 
@@ -23,7 +24,8 @@ def roc_auc_score_bootstrap(y_true: List,
                         confidence_level=confidence_level,
                         n_resamples=n_resamples,
                         method=method,
-                        random_state=random_state)
+                        random_state=random_state,
+                       strata=strata)
 
 
 def roc_auc_score(y_true: List,
