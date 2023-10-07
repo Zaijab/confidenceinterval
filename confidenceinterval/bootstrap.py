@@ -39,7 +39,7 @@ def bootstrap_ci(y_true: List[int],
 
     indices = (np.arange(len(y_true)), )
     
-    bootstrap_res = None if strata is None else BootstrapResult(bootstrap_distribution=np.array([metric(*resample(y_test, y_pred, stratify=strata)) for _ in range(n_resamples)])) 
+    bootstrap_res = None if strata is None else BootstrapResult(bootstrap_distribution=np.array([metric(*resample(y_true, y_pred, stratify=y_true)) for _ in range(n_resamples)])) 
     
     bootstrap_res = bootstrap(indices,
                               statistic=statistic,
